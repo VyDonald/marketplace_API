@@ -11,7 +11,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return response()->json(Products::all(), 200);
+        $products = Products::with(['category', 'images'])->get();
+        return response()->json($products, 200);
     }
 
     /**
@@ -27,6 +28,7 @@ class ProductController extends Controller
         ]);
         
         $product = Products::create($request->all());
+        $product->load(['category', 'images']);
         return response()->json($product, 201);
     }
 
@@ -35,6 +37,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
+        $product = Products::findOrFail($id); // Récupère d'abord le produit
         $product->load(['category', 'images']);
         return response()->json($product);
     }
@@ -54,6 +57,7 @@ class ProductController extends Controller
         ]);
         
         $product->update($request->all());
+        $product->load(['category', 'images']);
         return response()->json($product, 200);
     }
 

@@ -23,7 +23,7 @@ Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('admin/product-images', [ProductImageController::class, 'index']);
+Route::get('/product-images', [ProductImageController::class, 'index']);
 
 // filtrage , pagination
 Route::get('/public/categories', [PublicController::class, 'categories']);
@@ -36,15 +36,13 @@ Route::middleware('auth:sanctum', 'admin')->group(function () {
     Route::post('/admin/categories', [CategoryController::class, 'store']);
     Route::put('/admin/categories/{id}', [CategoryController::class, 'update']);
     Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy']);
-   //Route::get('admin/categories', [CategoryController::class, 'index']);
   
 
     // Produits
     Route::post('/admin/products', [ProductController::class, 'store']);
     Route::put('/admin/products/{id}', [ProductController::class, 'update']);
     Route::delete('/admin/products/{id}', [ProductController::class, 'destroy']);
-    //Route::get('admin/products', [ProductController::class, 'index']);
-   // Route::get('admin/products/{id}', [ProductController::class, 'show']);
+  
 
     // Images
     Route::post('/admin/product-images', [ProductImageController::class, 'store']);

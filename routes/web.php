@@ -17,16 +17,20 @@ use App\Http\Controllers\Admin\AdminAuthController;
 |
 */
 
+
+// Redirige la racine vers la page de login admin
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin.login');
 });
 
+// Groupe de routes admin
 Route::prefix('admin')->name('admin.')->group(function () {
-
+    // Routes publiques (login/logout)
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 
+    // Routes protégées par authentification
     Route::middleware('auth')->group(function () {
         Route::resource('categories', AdminCategoryController::class);
         Route::resource('dashboard', AdminDashboardController::class);
