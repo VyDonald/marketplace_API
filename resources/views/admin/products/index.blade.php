@@ -28,7 +28,7 @@
                         <tr id="productRow-{{ $product->id }}">
                             <td class="px-4 py-3">{{ $product->name }}</td>
                             <td class="px-4 py-3">{{ Str::limit($product->description, 50) }}</td>
-                            <td class="px-4 py-3">{{ number_format($product->price, 2) }} €</td>
+                            <td class="px-4 py-3">{{ number_format($product->price, 2) }} FCFA</td>
                             <td class="px-4 py-3">{{ $product->category->name }}</td>
                             <td class="px-4 py-3 text-end">
                                 <button class="btn btn-warning btn-sm editProductBtn me-2" 
@@ -77,7 +77,7 @@
                             <textarea class="form-control" id="productDescription" rows="3" placeholder="Entrez la description" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="productPrice" class="form-label fw-bold">Prix (€)</label>
+                            <label for="productPrice" class="form-label fw-bold">Prix(F)</label>
                             <input type="number" step="0.01" class="form-control" id="productPrice" placeholder="0.00" required>
                         </div>
                         <div class="mb-3">
@@ -118,7 +118,7 @@
                             <textarea class="form-control" id="editProductDescription" rows="3" placeholder="Entrez la description" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="editProductPrice" class="form-label fw-bold">Prix (€)</label>
+                            <label for="editProductPrice" class="form-label fw-bold">Prix(F)</label>
                             <input type="number" step="0.01" class="form-control" id="editProductPrice" placeholder="0.00" required>
                         </div>
                         <div class="mb-3">
